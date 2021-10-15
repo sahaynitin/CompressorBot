@@ -87,7 +87,7 @@ async def encc(e):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                await e.edit(str(er) + "\n\n**ERROR** Contact @Tellybots_4u")
                 COUNT.remove(e.chat_id)
                 os.remove(dl)
                 return os.remove(out)
@@ -145,8 +145,8 @@ async def sample(e):
     xxx = await e.edit(
         "`Generating Sample...`",
         buttons=[
-            [Button.inline("STATS", data=f"stats{wah}")],
-            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+            [Button.inline("✔️ Check Stats", data=f"stats{wah}")],
+            [Button.inline("⛔ Cancel Process", data=f"skip{wah}")],
         ],
     )
     ncmd = f'ffmpeg -i "{dl}" -preset ultrafast -ss {ss} -to {dd} -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{out}" -y'
@@ -177,10 +177,10 @@ async def sample(e):
             ),
             buttons=[
                 [
-                    Button.inline("SCREENSHOTS", data=f"sshot{wah}"),
-                    Button.inline("COMPRESS", data=f"sencc{wah}"),
+                    Button.inline("Screenshots 🖼️", data=f"sshot{wah}"),
+                    Button.inline("Compress 🗜️", data=f"sencc{wah}"),
                 ],
-                [Button.inline("SKIP", data=f"skip{wah}")],
+                [Button.inline("Skip 🤹", data=f"skip{wah}")],
             ],
         )
         COUNT.remove(e.chat_id)
@@ -297,14 +297,14 @@ async def encod(event):
         COUNT.remove(user.id)
         await event.client.send_message(
             event.chat_id,
-            f"🐠DOWNLODING COMPLETED!!🐠",
+            f"📩 Downloading Completed",
             buttons=[
                 [
-                    Button.inline("GENERATE SAMPLE", data=f"gsmpl{key}"),
-                    Button.inline("SCREENSHOTS", data=f"sshot{key}"),
+                    Button.inline("Generate Sample 🎬", data=f"gsmpl{key}"),
+                    Button.inline("Screenshots 🖼️", data=f"sshot{key}"),
                 ],
-                [Button.url("MEDIAINFO", url=inf)],
-                [Button.inline("COMPRESS", data=f"sencc{key}")],
+                [Button.url("🚦 Media Info", url=inf)],
+                [Button.inline("🗜️ Compress", data=f"sencc{key}")],
             ],
         )
     except BaseException as er:
@@ -333,7 +333,7 @@ async def customenc(e, key):
     er = stderr.decode()
     try:
         if er:
-            await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+            await e.edit(str(er) + "\n\n**ERROR** Contact @tellybots_support")
             COUNT.remove(e.chat_id)
             os.remove(dl)
             return os.remove(out)
@@ -351,7 +351,7 @@ async def customenc(e, key):
                      file=f,
                      name=out,
                      progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                         progress(d, t, nnn, ttt, "uploading..")
+                         progress(d, t, nnn, ttt, "Uploading..")
                          ),
                      )
         ds = await e.client.send_file(
